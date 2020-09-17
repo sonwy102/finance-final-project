@@ -1,3 +1,5 @@
+### Following Routes were written by Wooyang Son: buy, sell, quote, register, history, deposit ###
+
 import os
 import re
 
@@ -156,6 +158,7 @@ def history():
     return render_template("history.html", history=history)
 
 # Login Page
+# Written by CS50
 @app.route("/login", methods=["GET", "POST"])
 def login():
     # Forget any user_id
@@ -191,6 +194,7 @@ def login():
         return render_template("login.html")
 
 # Logout Page
+# Written by CS50
 @app.route("/logout")
 def logout():
     # Forget any user_id
