@@ -1,3 +1,5 @@
+### Helper functions were provided by CS50 ###
+
 import os
 import requests
 import urllib.parse
