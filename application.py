@@ -12,12 +12,15 @@ from datetime import datetime
 from helpers import apology, login_required, lookup, usd
 
 # Configure application
+# Written by CS50
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
+# Written by CS50
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
+# Written by CS50
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -27,18 +30,22 @@ def after_request(response):
 
 
 # Custom filter
+# Written by CS50
 app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
+# Written by CS50
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
+# Written by CS50
 db = SQL("sqlite:///finance.db")
 
 # Create additional tables and indexes in SQLite database
+# Written by Wooyang Son
 db.execute("CREATE TABLE IF NOT EXISTS purchases (user_id INTEGER NOT NULL, symbol TEXT NOT NULL, shares INTEGER NOT NULL, price NUMERIC NOT NULL, time DATETIME NOT NULL)")
 db.execute("CREATE UNIQUE INDEX IF NOT EXISTS time_index ON purchases (time)")
 db.execute("CREATE INDEX IF NOT EXISTS id_index ON purchases (user_id)")
@@ -52,6 +59,7 @@ if not os.environ.get("API_KEY"):
     raise RuntimeError("API_KEY not set")
 
 # Homepage of CS50 Finance
+# Written by Wooyang Son
 @app.route("/")
 @login_required
 def index():
@@ -98,6 +106,7 @@ def index():
     return render_template("index.html", purchases=purchases)
 
 # Buy Page
+# Written by Wooyang Son
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
@@ -136,6 +145,7 @@ def buy():
         return render_template("buy.html")
 
 # History Page
+# Written by Wooyang Son
 @app.route("/history")
 @login_required
 def history():
@@ -190,6 +200,7 @@ def logout():
     return redirect("/")
 
 # Quote Page
+# Written by Wooyang Son
 @app.route("/quote", methods=["GET", "POST"])
 @login_required
 def quote():
@@ -209,6 +220,7 @@ def quote():
         return render_template("quote.html")
 
 # Register Page
+# Written by Wooyang Son
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -242,6 +254,7 @@ def register():
         return render_template("register.html")
 
 # Sell Page
+# Written by Wooyang Son
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
@@ -288,6 +301,7 @@ def sell():
         return render_template("sell.html", purchases=purchases)
 
 # Deposit Page
+# Written by Wooyang Son
 @app.route("/deposit", methods=["GET", "POST"])
 @login_required
 def deposit():
@@ -317,7 +331,7 @@ def deposit():
     else:
         return render_template("deposit.html")
 
-
+# Written by CS50
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
@@ -326,5 +340,6 @@ def errorhandler(e):
 
 
 # Listen for errors
+# Written by CS50
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
