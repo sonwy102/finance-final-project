@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Deposit
+{% endblock %}
+
+{% block main %}
+    <form action="/deposit" method="post">
+        <div class="form-group row flexaligncenter">
+            <label for="deposit" class="col-form-label">$</label>
+            <div class="col-sm-2">
+                <input autofocus class="form-control" name="deposit" placeholder="Amount" type="number" pattern="^\d*(\.\d{0,2})?$">
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Deposit</button>
+    </form>
+
+{% endblock %}
