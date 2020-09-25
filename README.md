@@ -1,11 +1,11 @@
-# Finance 
-Finance is a web application where users can buy and sell stocks.
+# MyFinance 
+MyFinance is a web application where users can buy and sell stocks.
 
 ## Disclaimer
 This app was a final project for CS50 course. Parts of code were provided from the course. The code I wrote is labeled as so.
 
 ## Project Background
-Finance is a Flask app that allows users to register an account and manage their stock porfolio. The app provides a front-end facing platform
+MyFinance is a Flask app that allows users to register an account and manage their stock porfolio. The app provides a front-end facing platform
 for users to log in/out, look up a current stock quote, buy/sell stocks, view a history of transactions, and deposit a cash balance. Stock quote 
 data was provided by IEX via IEX's stocks API.
 
